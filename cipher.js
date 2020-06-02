@@ -34,9 +34,20 @@ while (i <= leng) {
     else {
         arr.push(orgText.codePointAt(i)+shiftFact)
     }
+    i++
+console.log(arr)
+
+}
+
+j=1
+k=0
+while (j <= arr.length)     {
+    arr[k] = String.fromCharCode(arr[k])
     console.log(arr)
-i++
+    k++
+    j++
 }
 })
+
 
 
