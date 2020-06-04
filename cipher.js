@@ -1,17 +1,17 @@
 
-document.getElementById("encrypt").addEventListener('click',
+document.getElementById("encrypt").addEventListener('click', //Add event listener to execute encryption
 function ()
 {
 
-var orgText = document.getElementById("orgText").value
-var shiftFact = Number(document.getElementById("shiftFact").value)
-var leng = (orgText.length - 1)
-arr = []
-i = 0
+var orgText = document.getElementById("orgText").value  //Get text value from Encryption box
+var shiftFact = Number(document.getElementById("shiftFact").value) //Get numerical value from Shift Factor
+var leng = (orgText.length - 1)             //Length we want loop to run          
+arr = []                                  //Add empty array to be pushed to
+i = 0                               
 while (i <= leng) {
     newTxt = orgText.codePointAt(i)+shiftFact  //Take shift factor and add number code for letter
     if (orgText.codePointAt(i)>122 || orgText.codePointAt(i) < 65 || (orgText.codePointAt(i) > 90 && orgText.codePointAt(i) < 97)) {
-        arr.push(orgText.codePointAt(i))
+        arr.push(orgText.codePointAt(i))  //Exclude applying shift factor for non alphabetical items
     }    
     else if (shiftFact > 0 && newTxt > 122) {
         arr.push((newTxt-122)+96)              //If number code is greater than end of alphabet for upercase
@@ -31,14 +31,13 @@ while (i <= leng) {
         arr.push(orgText.codePointAt(i)+shiftFact)
     }
     i++
-console.log(arr)
-// alert(arr.length)
 
 }
 
 j=1
 k=0
-while (j <= arr.length)     {
+while (j <= arr.length)     {           //While loop to take the applied shift factor from above and new text value
+                                        //Apply loop until new encrypted values are back to letter number or symbol form                                    
     arr[k] = String.fromCharCode(arr[k])
     console.log(arr)
     k++
