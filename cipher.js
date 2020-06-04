@@ -9,7 +9,17 @@ var leng = (orgText.length - 1)             //Length we want loop to run
 arr = []                                  //Add empty array to be pushed to
 i = 0                               
 while (i <= leng) {
+    if  (shiftFact > (26+(90-orgText.codePointAt(i))) || shiftFact > (26+(122-orgText.codePointAt(i)))) {
+
+        shiftFact = shiftFact - (Math.floor(shiftFact/26)*26)
+    }
+
+    else if (shiftFact<0 && (shiftFact < (-26 + (65-orgText.codePointAt(i))) || shiftFact < (-26 +(97-orgText.codePointAt(i))))){
+        shiftFact = -(shiftFact - (Math.floor(shiftFact/26)*26))
+    }   
+    
     newTxt = orgText.codePointAt(i)+shiftFact  //Take shift factor and add number code for letter
+
     if (orgText.codePointAt(i)>122 || orgText.codePointAt(i) < 65 || (orgText.codePointAt(i) > 90 && orgText.codePointAt(i) < 97)) {
         arr.push(orgText.codePointAt(i))  //Exclude applying shift factor for non alphabetical items
     }    
